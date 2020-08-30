@@ -1,6 +1,7 @@
 from datetime import datetime
 import mysql.connector
 from getpass import getpass
+from party import Party
 
 """
 We are using MySQL to manage our 'waitlist' database.
@@ -58,11 +59,11 @@ def check_tables():
     # If waiting and seated tables exist, we check if it is a new day. If so, we run del_tables() to clear the data.
     if mycursor.fetchone()[0] == 2:
         print('A table already exists. Checking if we should clear the table...')
-        del_tables(mycursor)
+        del_tables()
 
     else:
         print('Tables do not exist. Creating tables...')
-        create_tables(mycursor)
+        create_tables()
         print('\nTables for \'waiting\' and \'seated\' have now been created.')
 
 def del_tables():
@@ -108,7 +109,7 @@ def home():
 
     new_party = Party(datetime.now(), 1, Johnny, 3, 9492000892, 0)
 
-    insert(mycursor, new_party)
+    insert(new_party)
 
 if __name__ == '__main__':
     check_tables()

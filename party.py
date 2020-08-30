@@ -1,5 +1,3 @@
-from waitlist import Party
-
 class Party:
     """
     Created Party object whenever guests check in.
