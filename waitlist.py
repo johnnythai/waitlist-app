@@ -23,7 +23,6 @@ conn = mysql.connector.connect(
 
 mycursor = conn.cursor()
 
-
 def commit():
     """
     Committing changes to the database.
